@@ -35,9 +35,9 @@ The app allows users to:
 - [ ] It makes use of the reading and writing to the same file feature.
 - [x] It contains conditional statements.
   - **File name:** `meal_manager.py` | **Line number(s):** `39-49`
+  - **File name:** `app.py` | **Line number(s):** `16,24`
 - [x] It contains loops.
   - **File name:** `meal_manager.py` | **Line number(s):** `31,42`
-  - **File name:** `app.py` | **Line number(s):** `16,24`
 - [x] It lets the user enter a value in a text box at some point.
 - [x] It doesn't generate any error message even if the user enters a wrong input.
 - [x] It is styled using your own CSS.
