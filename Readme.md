@@ -37,8 +37,9 @@ The app allows users to:
   - **File name:** `meal_manager.py` | **Line number(s):** `39-49`
 - [x] It contains loops.
   - **File name:** `meal_manager.py` | **Line number(s):** `31,42`
-- [ ] It lets the user enter a value in a text box at some point.
-- [ ] It doesn't generate any error message even if the user enters a wrong input.
-- [ ] It is styled using your own CSS.
+  - **File name:** `app.py` | **Line number(s):** `16,24`
+- [x] It lets the user enter a value in a text box at some point.
+- [x] It doesn't generate any error message even if the user enters a wrong input.
+- [x] It is styled using your own CSS.
 - [x] The code follows conventions, is fully documented, and doesn't use `print()` or `console.log()`.
 - [x] All exercises have been completed and pushed to GitHub.

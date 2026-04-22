@@ -1,0 +1,82 @@
+:root {
+  --bg-light: #f9f8f3;
+  --card-white: #ffffff;
+  --neon-green: #00ff9d;
+  --text-dark: #1a1d1d;
+  --input-bg: #f0f0f0;
+}
+
+body.setup-body {
+  background-color: var(--bg-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.setup-card {
+  background-color: var(--card-white);
+  padding: 40px;
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  width: 380px;
+}
+
+.setup-card h1 {
+  color: var(--text-dark);
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+.setup-card h2 {
+  color: #666;
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+.setup-card label {
+  color: var(--text-dark);
+  display: block;
+  text-align: left;
+  margin: 20px 0 8px;
+  font-weight: 500;
+}
+
+.setup-card input {
+  width: 100%;
+  padding: 14px;
+  background-color: var(--input-bg);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  color: var(--text-dark);
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+
+.setup-card input:focus {
+  outline: none;
+  background-color: #fff;
+  border-color: var(--neon-green);
+  box-shadow: 0 0 15px rgba(0, 255, 157, 0.2);
+}
+
+.setup-card button {
+  width: 100%;
+  padding: 16px;
+  margin-top: 35px;
+  border: none;
+  border-radius: 30px;
+  background-color: var(--neon-green);
+  color: #000;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.setup-card button:hover {
+  filter: brightness(0.95);
+  transform: translateY(-2px);
+}

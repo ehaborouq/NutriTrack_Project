@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <title>NutriTrack | Welcome</title>
+  </head>
+  <body class="setup-body">
+    <div class="setup-card">
+      <h1>NutriTrack</h1>
+      <h2>Welcome to NutriTrack!</h2>
+      <form action="/setup" method="POST">
+        <label>What's your name?</label>
+        <input
+          type="text"
+          name="name"
+          placeholder="Your name..."
+          pattern="^(?!\d+$)[A-Za-z0-9\s]+$"
+          title="Name cannot be numbers only. Use letters or letters with numbers."
+          required
+        />
+
+        <label>Daily Calorie Goal</label>
+        <input
+          type="number"
+          name="goal"
+          placeholder="Your calorie goal..."
+          required
+        />
+
+        <button type="submit">Start My Journey</button>
+      </form>
+    </div>
+  </body>
+</html>
