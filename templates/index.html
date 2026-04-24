@@ -3,9 +3,84 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <link rel="stylesheet" href="/static/css/style.css" />
-    <title>Nutri Track</title>
+    <title>NutriTrack</title>
   </head>
-  <body></body>
-  <script src="/static/js/main.js"></script>
+  <body class="dashboard-body">
+    <aside class="sidebar">
+      <div class="logo"><i class="fas fa-leaf"></i><span>Nutri</span>Track</div>
+      <nav class="menu">
+        <ul>
+          <li>
+            <a href="/" class="active"
+              ><i class="fas fa-house"></i> Dashboard</a
+            >
+          </li>
+          <li>
+            <a href="/add-meal"><i class="fas fa-utensils"></i> Meals</a>
+          </li>
+          <li>
+            <a href="/history"><i class="fas fa-calendar-days"></i> History</a>
+          </li>
+          <li>
+            <a href="/settings"><i class="fas fa-gear"></i> Settings</a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="top-bar">
+        <h2 class="page-title">Dashboard</h2>
+
+        <div class="top-nav-icons">
+          <i class="far fa-bell"></i>
+          <div class="user-avatar-small"><i class="fas fa-user"></i></div>
+        </div>
+      </div>
+
+      <header class="main-header">
+        <h1>Welcome back, <span class="highlight">Ehab!</span> 👋</h1>
+      </header>
+
+      <section class="circle-section">
+        <div class="progress-circle">
+          <div class="circle-inner-content">
+            <h2>1,250</h2>
+            <p>/ 2,000 kcal</p>
+          </div>
+        </div>
+        <p class="remaining-text">750 kcal left</p>
+      </section>
+
+      <section class="stats-row">
+        <div class="stat-card">
+          <p class="stat-label">Macros (P/C/F)</p>
+          <div class="multi-bar">
+            <div class="bar-segment protein"></div>
+            <div class="bar-segment carbs"></div>
+            <div class="bar-segment fat"></div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <p class="stat-label">Activity Balance</p>
+          <div class="single-bar-bg">
+            <div class="bar-fill activity-fill"></div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <p class="stat-label">Water Intake</p>
+          <div class="single-bar-bg">
+            <div class="bar-fill water-fill"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="/static/js/main.js"></script>
+  </body>
 </html>

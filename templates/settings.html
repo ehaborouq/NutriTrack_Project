@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <title>NutriTrack</title>
+  </head>
+  <body class="dashboard-body">
+    <aside class="sidebar">
+      <div class="logo"><i class="fas fa-leaf"></i><span>Nutri</span>Track</div>
+      <nav class="menu">
+        <ul>
+          <li>
+            <a href="/"><i class="fas fa-house"></i> Dashboard</a>
+          </li>
+          <li>
+            <a href="/add-meal"><i class="fas fa-utensils"></i> Meals</a>
+          </li>
+          <li>
+            <a href="/history"><i class="fas fa-calendar-days"></i> History</a>
+          </li>
+          <li>
+            <a href="/settings" class="active"
+              ><i class="fas fa-gear"></i> Settings</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="top-bar">
+        <h2 class="page-title">Settings</h2>
+        <div class="top-nav-icons">
+          <i class="far fa-bell"></i>
+          <div class="user-avatar-small"><i class="fas fa-user"></i></div>
+        </div>
+      </div>
+
+      <section class="settings-layout">
+        <div class="settings-column">
+          <div class="settings-card">
+            <h3 class="card-subtitle">
+              <i class="fas fa-user-gear"></i> Profile & Goals
+            </h3>
+            <form id="profile-settings-form">
+              <div class="input-group">
+                <label>User Name</label>
+                <input
+                  type="text"
+                  id="setting-username"
+                  value="Ehab"
+                  placeholder="Edit your name..."
+                />
+              </div>
+              <div class="input-group">
+                <label>Daily Calorie Goal (kcal)</label>
+                <input
+                  type="number"
+                  id="setting-goal"
+                  value="2000"
+                  placeholder="e.g. 2500"
+                />
+              </div>
+              <button type="submit" class="save-btn">Update Profile</button>
+            </form>
+          </div>
+
+          <div class="settings-card">
+            <h3 class="card-subtitle">
+              <i class="fas fa-comment-dots"></i> Coach Personality
+            </h3>
+            <select class="settings-select" id="coach-style">
+              <option value="motivator">The Motivator (Friendly)</option>
+              <option value="strict">The Drill Sergeant (Strict)</option>
+              <option value="funny">The Comedian (Humorous)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="settings-column">
+          <div class="settings-card">
+            <h3 class="card-subtitle">
+              <i class="fas fa-display"></i> Appearance
+            </h3>
+            <div class="toggle-option">
+              <span>Dark Mode</span>
+              <label class="switch">
+                <input type="checkbox" id="dark-mode-toggle" />
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="settings-card danger-zone">
+            <h3 class="card-subtitle">
+              <i class="fas fa-triangle-exclamation"></i> Danger Zone
+            </h3>
+            <p class="danger-text">
+              Actions here cannot be undone. Be careful!
+            </p>
+
+            <div class="danger-actions">
+              <button class="danger-btn-outline" id="clear-history-btn">
+                <i class="far fa-trash-can"></i> Clear All History
+              </button>
+              <button class="danger-btn-solid" id="reset-account-btn">
+                <i class="fas fa-power-off"></i> Reset Account
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <title>NutriTrack</title>
+  </head>
+  <body class="dashboard-body">
+    <aside class="sidebar">
+      <div class="logo"><i class="fas fa-leaf"></i><span>Nutri</span>Track</div>
+      <nav class="menu">
+        <ul>
+          <li>
+            <a href="/"><i class="fas fa-house"></i> Dashboard</a>
+          </li>
+          <li>
+            <a href="/add-meal" class="active"
+              ><i class="fas fa-utensils"></i> Meals</a
+            >
+          </li>
+          <li>
+            <a href="/history"><i class="fas fa-calendar-days"></i> History</a>
+          </li>
+          <li>
+            <a href="/settings"><i class="fas fa-gear"></i> Settings</a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="top-bar">
+        <h2 class="page-title">Add Meal (Smart Entry)</h2>
+        <div class="top-nav-icons">
+          <i class="far fa-bell"></i>
+          <div class="user-avatar-small"><i class="fas fa-user"></i></div>
+        </div>
+      </div>
+
+      <section class="meal-form-container">
+        <div class="meal-card">
+          <form id="add-meal-form">
+            <div class="input-group">
+              <label>Meal Name</label>
+              <input type="text" placeholder="Write Meal Name..." required />
+            </div>
+
+            <div class="input-group">
+              <label>Calories</label>
+              <input type="number" placeholder="Calories Number" required />
+            </div>
+
+            <div class="input-group">
+              <label>Category</label>
+              <div class="category-selector">
+                <button type="button" class="cat-btn healthy-active">
+                  <i class="fas fa-leaf icon-healthy"></i> Healthy
+                </button>
+                <button type="button" class="cat-btn">
+                  <i class="fas fa-bolt icon-fastfood"></i> Fast Food
+                </button>
+                <button type="button" class="cat-btn">
+                  <i class="fas fa-cake-candles icon-celebration"></i>
+                  Celebration
+                </button>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label>Time</label>
+              <div class="time-input-wrapper">
+                <input type="text" placeholder="e.g. 2:30 PM" />
+                <i class="far fa-clock"></i>
+              </div>
+            </div>
+
+            <button type="submit" class="submit-meal-btn">Log Meal</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <script src="/static/js/main.js"></script>
+  </body>
+</html>
