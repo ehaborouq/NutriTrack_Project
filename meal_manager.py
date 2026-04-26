@@ -40,10 +40,19 @@ class MealManager:
             return "Start your day by logging a healthy meal!"
 
         total_consumed = sum(meal['calories'] for meal in self.meals_list)
+        remaining = self.daily_limit - total_consumed
 
         if total_consumed > self.daily_limit:
-            return "Daily limit exceeded! Consider some light activity."
-        elif total_consumed > (self.daily_limit * 0.8):
-            return "You're almost there! Make your next meal a light one."
+            return f"Daily limit exceeded by {abs(remaining)} kcal! Try to walk it off."
+
+        elif total_consumed == self.daily_limit:
+            return "Goal reached perfectly! No more calories needed for today."
+
+        elif total_consumed > (self.daily_limit * 0.85):
+            return "You're almost there! Your next meal should be very light."
+
+        elif total_consumed > (self.daily_limit * 0.5):
+            return "On track! You've consumed more than half of your daily goal."
+
         else:
             return "You're doing great! Keep tracking your progress."

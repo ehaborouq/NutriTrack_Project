@@ -23,18 +23,18 @@ The app allows users to:
 - [x] It is available on GitHub.
 - [x] It uses the Flask web framework.
 - [x] It uses at least one module from the Python Standard Library other than the random module.
-  - **Module name:** `datetime`
+  - **Module name:** `datetime`, `json`
 - [x] It contains at least one class written by you that has both properties and methods.
   - **File name:** `meal_manager.py`
-  - **Line number(s):** `3-49`
+  - **Line number(s):** `3-58`
   - **Properties:** `daily_limit`, `meals_list`
   - **Methods:** `add_meal`, `calculate_remaining_calories`, `get_nutrition_advice`
-  - **Usage:** `app.py` (TBD)
-- [ ] It makes use of JavaScript in the front end and uses the `localStorage` of the web browser.
-- [ ] It uses modern JavaScript (`let` and `const`).
-- [ ] It makes use of the reading and writing to the same file feature.
+  - **Usage:** Used in `app.py` to handle core logic and calorie calculations
+- [x] It makes use of JavaScript in the front end and uses the `localStorage` of the web browser.
+- [x] It uses modern JavaScript (`let` and `const`).
+- [x] It makes use of the reading and writing to the same file feature.
 - [x] It contains conditional statements.
-  - **File name:** `meal_manager.py` | **Line number(s):** `39-49`
+  - **File name:** `meal_manager.py` | **Line number(s):** `39-58`
   - **File name:** `app.py` | **Line number(s):** `16,24`
 - [x] It contains loops.
   - **File name:** `meal_manager.py` | **Line number(s):** `31,42`

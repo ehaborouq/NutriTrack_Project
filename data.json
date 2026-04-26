@@ -1,0 +1,43 @@
+[
+    {
+        "name": "testuser100",
+        "goal": 4500,
+        "meals": [
+            {
+                "name": "pizza",
+                "calories": 3000,
+                "category": null,
+                "time": null
+            },
+            {
+                "name": "margi pizza",
+                "calories": 300,
+                "category": null,
+                "time": null
+            },
+            {
+                "name": "meal 5",
+                "calories": 200,
+                "category": null,
+                "time": null
+            },
+            {
+                "name": "mal6",
+                "calories": 300,
+                "category": null,
+                "time": null
+            },
+            {
+                "name": "test cate and time ",
+                "calories": 300,
+                "category": "Fast Food",
+                "time": "06:37 \u0645"
+            }
+        ]
+    },
+    {
+        "name": "ehab31",
+        "goal": 3500,
+        "meals": []
+    }
+]

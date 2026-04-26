@@ -189,6 +189,7 @@ body.dashboard-body {
   align-items: center;
   gap: 20px;
   color: #666;
+  cursor: pointer;
 }
 
 .top-nav-icons i {
@@ -229,11 +230,19 @@ body.dashboard-body {
 .progress-circle {
   width: 220px;
   height: 220px;
-  background: conic-gradient(#2d8569 225deg, #e6e6e6 0deg);
+  /* background: conic-gradient(#2d8569 var(--deg), #e6e6e6 0deg); */
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.progress-circle.normal {
+  background: conic-gradient(#2d8569 var(--deg), #e6e6e6 0deg);
+}
+
+.progress-circle.exceeded {
+  background: conic-gradient(#e74c3c var(--deg), #e6e6e6 0deg);
 }
 
 .circle-inner-content {
@@ -262,6 +271,30 @@ body.dashboard-body {
   color: #666;
   font-weight: 500;
 }
+
+.nutrition-advice {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.nutrition-advice.normal {
+  color: #2d8569;
+  background-color: #e9f2ef;
+}
+
+.nutrition-advice.exceeded {
+  color: #e74c3c;
+  background-color: #fceae9;
+  border: 1px solid #e74c3c;
+}
+
 
 /* Stats Cards Section */
 .stats-row {

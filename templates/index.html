@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌿</text></svg>"
+    />
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
@@ -44,17 +48,25 @@
       </div>
 
       <header class="main-header">
-        <h1>Welcome back, <span class="highlight">Ehab!</span> 👋</h1>
+        <h1>
+          Welcome$$BACK$$, <span class="highlight">$$NAME$$!</span> $$ICON$$
+        </h1>
       </header>
 
       <section class="circle-section">
-        <div class="progress-circle">
+        <div
+          class="progress-circle $$STATUS_CLASS$$"
+          style="--deg: $$PROGRESS$$deg"
+        >
           <div class="circle-inner-content">
-            <h2>1,250</h2>
-            <p>/ 2,000 kcal</p>
+            <h2>$$TOTAL$$</h2>
+            <p>/ $$GOAL$$ kcal</p>
           </div>
         </div>
-        <p class="remaining-text">750 kcal left</p>
+        <p class="remaining-text">$$REMAINING$$ kcal left</p>
+        <p class="nutrition-advice $$STATUS_CLASS$$">
+          <i class="fas fa-info-circle"></i> $$ADVICE$$
+        </p>
       </section>
 
       <section class="stats-row">

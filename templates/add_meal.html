@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌿</text></svg>"
+    />
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
@@ -44,27 +48,49 @@
 
       <section class="meal-form-container">
         <div class="meal-card">
-          <form id="add-meal-form">
+          <form method="post" action="/add-meal" id="add-meal-form">
             <div class="input-group">
               <label>Meal Name</label>
-              <input type="text" placeholder="Write Meal Name..." required />
+              <input
+                type="text"
+                placeholder="Write Meal Name..."
+                name="meal_name"
+                required
+              />
             </div>
 
             <div class="input-group">
               <label>Calories</label>
-              <input type="number" placeholder="Calories Number" required />
+              <input
+                type="number"
+                placeholder="Calories Number"
+                name="calories"
+                required
+              />
             </div>
 
             <div class="input-group">
               <label>Category</label>
+              <input
+                type="hidden"
+                name="category"
+                id="category-input"
+                value="Healthy"
+                required
+              />
+
               <div class="category-selector">
-                <button type="button" class="cat-btn healthy-active">
+                <button
+                  type="button"
+                  class="cat-btn healthy-active"
+                  data-value="Healthy"
+                >
                   <i class="fas fa-leaf icon-healthy"></i> Healthy
                 </button>
-                <button type="button" class="cat-btn">
+                <button type="button" class="cat-btn" data-value="Fast Food">
                   <i class="fas fa-bolt icon-fastfood"></i> Fast Food
                 </button>
-                <button type="button" class="cat-btn">
+                <button type="button" class="cat-btn" data-value="Celebration">
                   <i class="fas fa-cake-candles icon-celebration"></i>
                   Celebration
                 </button>
@@ -74,7 +100,13 @@
             <div class="input-group">
               <label>Time</label>
               <div class="time-input-wrapper">
-                <input type="text" placeholder="e.g. 2:30 PM" />
+                <input
+                  type="text"
+                  name="meal_time"
+                  id="meal-time"
+                  placeholder="e.g. 2:30 PM"
+                  required
+                />
                 <i class="far fa-clock"></i>
               </div>
             </div>

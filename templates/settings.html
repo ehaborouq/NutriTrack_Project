@@ -4,9 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌿</text></svg>"
+    />
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="/static/css/style.css" />
     <title>NutriTrack</title>
   </head>
@@ -54,7 +59,6 @@
                 <input
                   type="text"
                   id="setting-username"
-                  value="Ehab"
                   placeholder="Edit your name..."
                 />
               </div>
@@ -63,7 +67,6 @@
                 <input
                   type="number"
                   id="setting-goal"
-                  value="2000"
                   placeholder="e.g. 2500"
                 />
               </div>
@@ -110,12 +113,14 @@
                 <i class="far fa-trash-can"></i> Clear All History
               </button>
               <button class="danger-btn-solid" id="reset-account-btn">
-                <i class="fas fa-power-off"></i> Reset Account
+                <i class="fas fa-power-off"></i> Delete Account
               </button>
             </div>
           </div>
         </div>
       </section>
     </main>
+
+    <script src="/static/js/main.js"></script>
   </body>
 </html>
