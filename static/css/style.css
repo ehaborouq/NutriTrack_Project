@@ -8,6 +8,143 @@
   --input-bg: #f0f0f0;
 }
 
+/* ============================================================
+  DARK MODE STYLES - NutriTrack Professional Theme
+   ============================================================ */
+
+body.dark-mode {
+    --bg-light: #0f1111;
+    --card-white: #1a1d1d;
+    --text-dark: #f0f0f0;
+    --text-gray: #a0a0a0;
+    --input-bg: #252828;
+    --sidebar-border: #2a2d2d;
+    --neon-green: #24f09a;
+    --faint-green: #1a3d32;
+    --neon-red: #ff4d4d;
+    --faint-red: #3d1a1a;
+}
+
+body.dark-mode .setup-card h1,
+body.dark-mode .setup-card label,
+body.dark-mode .page-title,
+body.dark-mode .main-header h1,
+body.dark-mode .input-group label {
+    color: var(--text-dark);
+}
+
+body.dark-mode .setup-card h2,
+body.dark-mode .remaining-text {
+    color: var(--text-gray);
+}
+
+body.dark-mode .main-header span {
+  color: var(--neon-green);
+}
+
+body.dark-mode .sidebar {
+    background-color: var(--bg-light);
+    border-right: 1px solid var(--sidebar-border);
+}
+
+body.dark-mode .menu a {
+    color: var(--text-gray);
+}
+
+body.dark-mode .menu a.active {
+    background-color: #25282D;
+    color: var(--neon-green);
+    font-weight: 700;
+}
+
+body.dark-mode .progress-circle.normal {
+    background: conic-gradient(var(--neon-green) var(--deg), var(--faint-green) 0deg) !important;
+    box-shadow: 0 0 20px rgba(36, 240, 154, 0.05);
+}
+
+body.dark-mode .progress-circle.exceeded {
+    background: conic-gradient(var(--neon-red) var(--deg), var(--faint-red) 0deg) !important;
+}
+
+body.dark-mode .circle-inner-content {
+    background-color: var(--bg-light) !important;
+}
+
+body.dark-mode .circle-inner-content h2 { color: white; }
+
+body.dark-mode .nutrition-advice {
+  background-color: var(--sidebar-border);
+}
+
+body.dark-mode .nutrition-advice.normal {
+  color: var(--neon-green);
+}
+
+body.dark-mode .single-bar-bg,
+body.dark-mode .multi-bar {
+    background-color: var(--faint-green);
+}
+
+body.dark-mode .activity-fill {
+    background-color: var(--neon-green);
+}
+
+body.dark-mode input,
+body.dark-mode .input-group input {
+    background-color: var(--input-bg);
+    border: 1px solid var(--sidebar-border);
+    color: white;
+}
+
+body.dark-mode input:focus {
+    background-color: #1a1d1d;
+    border-color: var(--neon-green);
+    box-shadow: 0 0 15px rgba(36, 240, 154, 0.15);
+}
+
+body.dark-mode .stat-card,
+body.dark-mode .history-card,
+body.dark-mode .meal-card,
+body.dark-mode .settings-card {
+    background-color: var(--card-white);
+    border-color: var(--sidebar-border);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+
+body.dark-mode .card-icon-bg {
+    background-color: var(--input-bg);
+}
+
+body.dark-mode .cat-btn {
+    background-color: var(--input-bg);
+    border-color: var(--sidebar-border);
+    color: var(--text-gray);
+}
+
+body.dark-mode .cat-btn.healthy-active {
+    border-color: var(--neon-green) !important;
+}
+
+body.dark-mode .cat-btn.fastfood-active {
+    border-color: #f1c40f !important;
+}
+
+body.dark-mode .cat-btn.celebration-active {
+    border-color: var(--neon-red) !important;
+}
+
+body.dark-mode .history-card.healthy-border {
+    border-left: 6px solid var(--neon-green) !important;
+}
+
+body.dark-mode .history-card.fastfood-border {
+    border-left: 6px solid #f1c40f !important;
+}
+
+body.dark-mode .history-card.celebration-border {
+    border-left: 6px solid var(--neon-red) !important;
+}
+
 body {
   font-family: 'Work Sans', sans-serif;;
 }
@@ -197,8 +334,8 @@ body.dashboard-body {
 }
 
 .user-avatar-small {
-  width: 35px;
-  height: 35px;
+  width: 28px;
+  height: 28px;
   background-color: #ccc;
   border-radius: 50%;
   display: flex;
@@ -468,7 +605,7 @@ body.dashboard-body {
 .time-input-wrapper i {
   position: absolute;
   right: 20px;
-  top: 50%;
+  top: 23px;
   transform: translateY(-50%);
   color: #999;
 }

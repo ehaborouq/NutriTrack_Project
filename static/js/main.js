@@ -129,3 +129,23 @@ if (deleteAccountBtn) {
     });
   });
 }
+
+function toggleDarkMode() {
+  const isDark = document.getElementById("darkModeToggle").checked;
+  if (isDark) {
+    document.body.classList.add("dark-mode");
+    localStorage.setItem("theme", "dark");
+  } else {
+    document.body.classList.remove("dark-mode");
+    localStorage.setItem("theme", "light");
+  }
+}
+
+window.onload = function () {
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark-mode");
+    if (document.getElementById("darkModeToggle")) {
+      document.getElementById("darkModeToggle").checked = true;
+    }
+  }
+};

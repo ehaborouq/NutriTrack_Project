@@ -255,3 +255,9 @@ def delete_account():
     flask.session.clear()
 
     return flask.jsonify({"status": "success"})
+
+
+@app.route("/logout")
+def logout():
+    flask.session.pop("user_name", None)
+    return flask.redirect("/setup")

@@ -44,6 +44,9 @@
         <div class="top-nav-icons">
           <i class="far fa-bell"></i>
           <div class="user-avatar-small"><i class="fas fa-user"></i></div>
+          <a href="/logout" title="Logout" style="color: inherit">
+            <i class="fas fa-sign-out-alt"></i>
+          </a>
         </div>
       </div>
 
@@ -94,7 +97,11 @@
             <div class="toggle-option">
               <span>Dark Mode</span>
               <label class="switch">
-                <input type="checkbox" id="dark-mode-toggle" />
+                <input
+                  type="checkbox"
+                  id="darkModeToggle"
+                  onclick="toggleDarkMode()"
+                />
                 <span class="slider round"></span>
               </label>
             </div>
