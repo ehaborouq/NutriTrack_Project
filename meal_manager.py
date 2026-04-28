@@ -32,27 +32,46 @@ class MealManager:
         remaining = self.daily_limit - total_consumed
         return max(0, remaining)
 
-    def get_nutrition_advice(self):
+
+    def get_nutrition_advice(self, personality="Motivator"):
+
         """
         Provides smart feedback based on the user's total calorie intake.
         """
-        if not self.meals_list:
-            return "Start your day by logging a healthy meal!"
-
         total_consumed = sum(meal['calories'] for meal in self.meals_list)
-        remaining = self.daily_limit - total_consumed
+        ratio = total_consumed / self.daily_limit
 
-        if total_consumed > self.daily_limit:
-            return f"Daily limit exceeded by {abs(remaining)} kcal! Try to walk it off."
+        exceeded_by = total_consumed - self.daily_limit
 
-        elif total_consumed == self.daily_limit:
-            return "Goal reached perfectly! No more calories needed for today."
+        coaches = {
+            "Motivator": {
+                "start": "Great start! Every healthy choice counts today. 🌟",
+                "half": "You're halfway there! Keep that momentum going! 💪",
+                "near": "Almost at the finish line! Keep your next meal light. ✨",
+                "limit": "Goal reached! You're a champion today! 🏆",
+                "exceeded": f"Over the limit by {exceeded_by} kcal, but don't give up! Let's move a bit more. 🚶‍♂️"
+            },
+            "Strict": {
+                "start": "System active. Awaiting your first entry. Stay disciplined. ⚖️",
+                "half": "50% reached. No room for unplanned snacks. 🚫",
+                "near": "Warning: 85% capacity reached. Choose wisely. ⚠️",
+                "limit": "Capacity full. Protocol: Stop eating. 🛑",
+                "exceeded": f"Limit violated! {exceeded_by} kcal excess detected. Rectify now. 📉"
+            },
+            "Comedian": {
+                "start": "The fridge is watching you... make it proud! 🥗",
+                "half": "Halfway done! Your stomach is currently 50% happy. 🍔",
+                "near": "Aborted mission! You're almost full, don't be a hero. 🦸‍♂️",
+                "limit": "Game over! You've officially defeated hunger today. 🎮",
+                "exceeded": f"Oops! {exceeded_by} extra calories! They're winning! Run for your life! 🏃‍♂️"
+            }
+        }
 
-        elif total_consumed > (self.daily_limit * 0.85):
-            return "You're almost there! Your next meal should be very light."
+        coach = coaches.get(personality, coaches["Motivator"])
 
-        elif total_consumed > (self.daily_limit * 0.5):
-            return "On track! You've consumed more than half of your daily goal."
-
-        else:
-            return "You're doing great! Keep tracking your progress."
+        if not self.meals_list: return coach["start"]
+        if total_consumed > self.daily_limit: return coach["exceeded"]
+        if total_consumed == self.daily_limit: return coach["limit"]
+        if ratio > 0.85: return coach["near"]
+        if ratio > 0.5: return coach["half"]
+        return coach["start"]

@@ -71,14 +71,53 @@ if (settingsForm) {
 
     const newName = document.getElementById("setting-username").value;
     const newGoal = document.getElementById("setting-goal").value;
+    const newPersonality = document.getElementById("coach-style").value;
 
     fetch("/update-profile", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: newName, goal: newGoal }),
+      body: JSON.stringify({
+        name: newName,
+        goal: newGoal,
+        personality: newPersonality,
+      }),
     }).then((response) => {
       if (response.ok) {
+        Swal.fire("Success!", "Profile updated successfully.", "success");
         window.location.reload();
+      }
+    });
+  });
+}
+
+const coachSelect = document.getElementById("coach-style");
+
+if (coachSelect) {
+  coachSelect.addEventListener("change", function () {
+    const newPersonality = this.value;
+    const currentName = document.getElementById("setting-username").value;
+    const currentGoal = document.getElementById("setting-goal").value;
+
+    fetch("/update-profile", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: currentName,
+        goal: currentGoal,
+        personality: newPersonality,
+      }),
+    }).then((response) => {
+      if (response.ok) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+        Toast.fire({
+          icon: "success",
+          title: `Coach personality updated!`,
+        });
       }
     });
   });

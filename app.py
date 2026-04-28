@@ -24,11 +24,11 @@ def save_data(data):
 @app.route("/")
 def home():
     all_users = get_data()
-
     current_username = flask.session.get("user_name")
 
     if not all_users or not current_username:
         return flask.redirect("/setup")
+
     user_data = next((u for u in all_users if u["name"] == current_username), None)
 
     if not user_data:
@@ -43,15 +43,17 @@ def home():
         back_text = " back"
         icon = "👋"
 
+    user_personality = user_data.get("personality", "Motivator")
+
     manager = MealManager(daily_limit=user_data["goal"])
     manager.meals_list = user_data["meals"]
 
     total_consumed = sum(meal['calories'] for meal in user_data['meals'])
     remaining = manager.calculate_remaining_calories()
-    advice = manager.get_nutrition_advice()
+
+    advice = manager.get_nutrition_advice(personality=user_personality)
 
     consumption_ratio = total_consumed / user_data["goal"]
-
     status_class = "exceeded" if total_consumed > user_data["goal"] else "normal"
 
     ui_ratio = consumption_ratio if consumption_ratio <= 1 else 1
@@ -89,6 +91,7 @@ def setup():
             new_user = {
                 "name": name,
                 "goal": int(goal),
+                "personality": "Motivator",
                 "meals": []
             }
             all_users.append(new_user)
@@ -136,9 +139,7 @@ def history():
     meals_html = ""
 
     if user_data and user_data["meals"]:
-
         for index, meal in enumerate(user_data["meals"]):
-
             category = meal.get("category", "Healthy")
             if category == "Healthy":
                 border_class = "healthy-border"
@@ -149,7 +150,6 @@ def history():
             else:
                 border_class = "celebration-border"
                 icon_class = "fa-cake-candles icon-celebration"
-
 
             meals_html += f'''
             <div class="history-card {border_class}">
@@ -176,7 +176,6 @@ def history():
 
     return page.replace("$$MEALS_LIST$$", meals_html)
 
-
 @app.route("/delete-meal/<int:meal_index>")
 def delete_meal(meal_index):
     all_users = get_data()
@@ -189,7 +188,6 @@ def delete_meal(meal_index):
 
     save_data(all_users)
     return flask.redirect("/history")
-
 
 @app.route("/settings")
 def settings():
@@ -206,14 +204,18 @@ def settings():
         page = page.replace('id="setting-username"', f'id="setting-username" value="{user_data["name"]}"')
         page = page.replace('id="setting-goal"', f'id="setting-goal" value="{user_data["goal"]}"')
 
-    return page
+        current_personality = user_data.get("personality", "Motivator")
+        target_value = f'value="{current_personality}"'
+        page = page.replace(target_value, f'{target_value} selected')
 
+    return page
 
 @app.route("/update-profile", methods=["POST"])
 def update_profile():
     data = flask.request.json
     new_name = data.get("name")
     new_goal = int(data.get("goal"))
+    new_personality = data.get("personality")
 
     all_users = get_data()
     current_username = flask.session.get("user_name")
@@ -222,13 +224,13 @@ def update_profile():
         if user["name"] == current_username:
             user["name"] = new_name
             user["goal"] = new_goal
+            user["personality"] = new_personality
             break
 
     save_data(all_users)
     flask.session["user_name"] = new_name
 
     return flask.jsonify({"status": "success"})
-
 
 @app.route("/clear-history", methods=["POST"])
 def clear_history():
@@ -243,7 +245,6 @@ def clear_history():
     save_data(all_users)
     return flask.jsonify({"status": "success"})
 
-
 @app.route("/delete-account", methods=["POST"])
 def delete_account():
     current_username = flask.session.get("user_name")
@@ -255,7 +256,6 @@ def delete_account():
     flask.session.clear()
 
     return flask.jsonify({"status": "success"})
-
 
 @app.route("/logout")
 def logout():
