@@ -77,7 +77,7 @@ Detailed screenshots of the application in both Light and Dark modes can be foun
 - [x] It makes use of the reading and writing to the same file feature.
 - [x] It contains conditional statements.
   - **File name:** `meal_manager.py` | **Line number(s):** `76-87`
-  - **File name:** `app.py` | **Line number(s):** `50, 54, 66, 67`
+  - **File name:** `app.py` | **Line number(s):** `43, 46, 58, 62`
 - [x] It contains loops.
   - **File name:** `meal_manager.py` | **Line number(s):** `32,41`
 - [x] It lets the user enter a value in a text box at some point.
