@@ -34,9 +34,18 @@ def validate_positive_int(value, default=1):
     """Security: Ensures input values are positive integers. Prevents negative calories/goals."""
     try:
         clean_val = int(value)
-        return clean_val if clean_val > 0 else default
+        return clean_val if 0 < clean_val <= 10000 else default
     except (ValueError, TypeError):
         return default
+
+def is_valid_name(name):
+    """Simple check: Name shouldn't be empty or just numbers."""
+    if not name or not name.strip():
+        return False
+
+    if name.strip().isdigit():
+        return False
+    return True
 
 # --- ROUTE HANDLERS ---
 
@@ -46,7 +55,6 @@ def home():
     all_users = get_data()
     current_username = flask.session.get("user_name")
 
-    # Redirect to setup if no active session or data found
     if not all_users or not current_username:
         return flask.redirect("/setup")
 
@@ -54,7 +62,6 @@ def home():
     if not user_data:
         return flask.redirect("/setup")
 
-    # Business Logic via MealManager
     manager = MealManager(daily_limit=user_data["goal"])
     manager.meals_list = user_data["meals"]
 
@@ -62,7 +69,6 @@ def home():
     remaining = manager.calculate_remaining_calories()
     advice = manager.get_nutrition_advice(personality=user_data.get("personality", "Motivator"))
 
-    # UI Calculations: Handles icons, progress bar degrees, and status styling
     icon = "👋" if user_data.get("meals") else "🌿"
     back_text = " back" if user_data.get("meals") else ""
 
@@ -70,7 +76,6 @@ def home():
     status_class = "exceeded" if total_consumed > user_data["goal"] else "normal"
     progress_degree = min(1.0, consumption_ratio) * 360
 
-    # Dynamic UI Replacement
     page = get_html("index")
     replacements = {
         "$$BACK$$": back_text, "$$ICON$$": icon, "$$NAME$$": user_data["name"],
@@ -87,8 +92,11 @@ def home():
 def setup():
     """Onboarding Route: Registers a new user or updates an existing goal."""
     if flask.request.method == "POST":
-        name = flask.request.form.get("name")
+        name = flask.request.form.get("name", "").strip()
         goal = validate_positive_int(flask.request.form.get("goal"), default=2000)
+
+        if not is_valid_name(name):
+            return flask.redirect("/setup")
 
         all_users = get_data()
         user_exists = False
@@ -117,11 +125,14 @@ def add_meal():
     if not current_username: return flask.redirect("/setup")
 
     if flask.request.method == "POST":
-        # Data Validation (Double Protection)
-        calories = validate_positive_int(flask.request.form.get("calories"))
+        meal_name = flask.request.form.get("meal_name", "").strip()
+        calories = validate_positive_int(flask.request.form.get("calories"), default=100)
+
+        if not meal_name:
+            return flask.redirect("/add-meal")
 
         new_entry = {
-            "name": flask.request.form.get("meal_name"),
+            "name": meal_name,
             "calories": calories,
             "category": flask.request.form.get("category"),
             "time": flask.request.form.get("meal_time")
@@ -149,7 +160,6 @@ def history():
     meals_html = ""
 
     if user_data and user_data["meals"]:
-        # Icon Mapping Table
         icons = {
             "Healthy": ("healthy-border", "fa-leaf icon-healthy"),
             "Fast Food": ("fastfood-border", "fa-bolt icon-fastfood"),
@@ -224,15 +234,21 @@ def update_profile():
     all_users = get_data()
     current_username = flask.session.get("user_name")
 
+    new_name = data.get("name", "").strip()
+    new_goal = validate_positive_int(data.get("goal"), default=2000)
+
+    if not is_valid_name(new_name):
+        return flask.jsonify({"status": "error", "message": "Invalid Name"}), 400
+
     for user in all_users:
         if user["name"] == current_username:
-            user["name"] = data.get("name")
-            user["goal"] = validate_positive_int(data.get("goal"), default=2000)
+            user["name"] = new_name
+            user["goal"] = new_goal
             user["personality"] = data.get("personality")
             break
 
     save_data(all_users)
-    flask.session["user_name"] = data.get("name")
+    flask.session["user_name"] = new_name
     return flask.jsonify({"status": "success"})
 
 @app.route("/clear-history", methods=["POST"])

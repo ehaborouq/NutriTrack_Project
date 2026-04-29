@@ -65,6 +65,10 @@
                   type="text"
                   id="setting-username"
                   placeholder="Edit your name..."
+                  pattern="^(?!\d+$)[A-Za-z0-9\s]+$"
+                  title="Name cannot be numbers only."
+                  required
+                  maxlength="20"
                 />
               </div>
               <div class="input-group">
@@ -73,6 +77,9 @@
                   type="number"
                   id="setting-goal"
                   placeholder="e.g. 2500"
+                  min="500"
+                  max="10000"
+                  required
                 />
               </div>
               <button type="submit" class="save-btn">Update Profile</button>

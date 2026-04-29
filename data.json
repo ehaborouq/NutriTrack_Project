@@ -1,1 +1,15 @@
-[]
+[
+    {
+        "name": "2ww",
+        "goal": 2222,
+        "personality": "Motivator",
+        "meals": [
+            {
+                "name": "w",
+                "calories": 3000,
+                "category": "Healthy",
+                "time": "10:21 PM"
+            }
+        ]
+    }
+]

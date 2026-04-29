@@ -33,6 +33,7 @@
           pattern="^(?!\d+$)[A-Za-z0-9\s]+$"
           title="Name cannot be numbers only. Use letters or letters with numbers."
           required
+          maxlength="20"
         />
 
         <label>Daily Calorie Goal</label>
@@ -41,6 +42,8 @@
           name="goal"
           placeholder="Your calorie goal..."
           required
+          min="500"
+          max="10000"
         />
 
         <button type="submit">Start My Journey</button>
