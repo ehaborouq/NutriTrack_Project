@@ -7,6 +7,7 @@
       rel="icon"
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌿</text></svg>"
     />
+    <!-- External icons library (Font Awesome) for dashboard visuals -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -15,6 +16,7 @@
     <title>NutriTrack</title>
   </head>
   <body class="dashboard-body">
+    <!-- Main navigation sidebar: Links for Dashboard, Meals, History, and Settings -->
     <aside class="sidebar">
       <div class="logo"><i class="fas fa-leaf"></i><span>Nutri</span>Track</div>
       <nav class="menu">
@@ -38,6 +40,7 @@
     </aside>
 
     <main class="main-content">
+      <!-- Top utility bar: Page title and user actions like logout -->
       <div class="top-bar">
         <h2 class="page-title">Dashboard</h2>
 
@@ -49,13 +52,13 @@
           </a>
         </div>
       </div>
-
+      <!-- User greeting: Dynamically populated with name and icons from the backend -->
       <header class="main-header">
         <h1>
           Welcome$$BACK$$, <span class="highlight">$$NAME$$!</span> $$ICON$$
         </h1>
       </header>
-
+      <!-- Daily calorie tracker: Visual circular progress vs user goal -->
       <section class="circle-section">
         <div
           class="progress-circle $$STATUS_CLASS$$"
@@ -67,6 +70,7 @@
           </div>
         </div>
         <p class="remaining-text">$$REMAINING$$ kcal left</p>
+        <!-- Coach feedback: Displaying messages based on the active personality profile -->
         <p class="nutrition-advice $$STATUS_CLASS$$">
           <i class="fas fa-info-circle"></i> $$ADVICE$$
         </p>
@@ -95,7 +99,7 @@
         </div>
       </section>
     </main>
-
+    <!-- Frontend interactions: Handling dark mode toggling and UI updates -->
     <script src="/static/js/main.js"></script>
   </body>
 </html>

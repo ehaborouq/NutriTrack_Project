@@ -14,14 +14,18 @@
     <title>NutriTrack</title>
   </head>
   <body class="setup-body">
+    <!-- Onboarding Card Container -->
     <div class="setup-card">
+      <!-- App Branding and Logo -->
       <h1>
         <i class="fas fa-leaf" style="color: #2d8569"></i>
         <span style="color: #2d8569">Nutri</span>Track
       </h1>
       <h2>Welcome to NutriTrack!</h2>
+      <!-- Initial User Setup Form -->
       <form action="/setup" method="POST">
         <label>What's your name?</label>
+        <!-- Regex Prevents names consisting of only numbers -->
         <input
           type="text"
           name="name"

@@ -11,6 +11,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <!-- SweetAlert2 for confirming destructive actions like clearing history or deleting accounts -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="/static/css/style.css" />
     <title>NutriTrack</title>
@@ -56,6 +57,7 @@
             <h3 class="card-subtitle">
               <i class="fas fa-user-gear"></i> Profile & Goals
             </h3>
+            <!-- User Profile Configuration: Updating name and daily nutritional targets -->
             <form id="profile-settings-form">
               <div class="input-group">
                 <label>User Name</label>
@@ -81,6 +83,7 @@
             <h3 class="card-subtitle">
               <i class="fas fa-comment-dots"></i> Coach Personality
             </h3>
+            <!-- Personalization: User can choose the coach's tone which affects the dashboard feedback -->
             <select class="settings-select" id="coach-style">
               <option value="Motivator">The Motivator (Friendly)</option>
               <option value="Strict">The Drill Sergeant (Strict)</option>
@@ -94,6 +97,7 @@
             <h3 class="card-subtitle">
               <i class="fas fa-display"></i> Appearance
             </h3>
+            <!-- Theme Management: Persistent Dark Mode toggle controlled via main.js -->
             <div class="toggle-option">
               <span>Dark Mode</span>
               <label class="switch">

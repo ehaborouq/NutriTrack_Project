@@ -2,17 +2,18 @@ import datetime
 
 class MealManager:
     """
-    Manages user meals, calorie calculations, and nutritional advice.
+    Core logic for managing meal logs, calculating metrics,
+    and generating personality-based coaching feedback.
     """
+
     def __init__(self, daily_limit=2000):
-        # Setting the core properties for the manager
+        # Initialize the meal manager with a default or user-defined calorie goal
         self.daily_limit = daily_limit
         self.meals_list = []
 
     def add_meal(self, name, calories, category):
         """
-        Creates a meal dictionary and appends it to the list.
-        Returns the newly created meal.
+        Creates a new meal entry and stores it in the session history.
         """
         new_meal = {
             "name": name,
@@ -25,24 +26,25 @@ class MealManager:
 
     def calculate_remaining_calories(self):
         """
-        Computes the remaining calories based on the daily limit.
-        Ensures the result is never below zero.
+        Calculates how many calories are left before reaching the daily goal.
+        Returns 0 if the limit is exceeded.
         """
         total_consumed = sum(meal['calories'] for meal in self.meals_list)
         remaining = self.daily_limit - total_consumed
         return max(0, remaining)
 
-
     def get_nutrition_advice(self, personality="Motivator"):
-
         """
-        Provides smart feedback based on the user's total calorie intake.
+        Generates dynamic advice based on the user's consumption progress
+        and the selected coach's personality.
         """
         total_consumed = sum(meal['calories'] for meal in self.meals_list)
-        ratio = total_consumed / self.daily_limit
 
+        # Calculate progress ratio and over-limit amount
+        ratio = total_consumed / self.daily_limit if self.daily_limit > 0 else 0
         exceeded_by = total_consumed - self.daily_limit
 
+        # Coach Personality Dictionary: Centralized messages for easy updates
         coaches = {
             "Motivator": {
                 "start": "Great start! Every healthy choice counts today. 🌟",
@@ -67,11 +69,19 @@ class MealManager:
             }
         }
 
+        # Fallback to 'Motivator' if selected personality is not found
         coach = coaches.get(personality, coaches["Motivator"])
 
-        if not self.meals_list: return coach["start"]
-        if total_consumed > self.daily_limit: return coach["exceeded"]
-        if total_consumed == self.daily_limit: return coach["limit"]
-        if ratio > 0.85: return coach["near"]
-        if ratio > 0.5: return coach["half"]
+        # Logical routing for advice triggers
+        if not self.meals_list:
+            return coach["start"]
+        if total_consumed > self.daily_limit:
+            return coach["exceeded"]
+        if total_consumed == self.daily_limit:
+            return coach["limit"]
+        if ratio > 0.85:
+            return coach["near"]
+        if ratio > 0.5:
+            return coach["half"]
+
         return coach["start"]

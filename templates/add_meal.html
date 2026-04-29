@@ -39,7 +39,7 @@
 
     <main class="main-content">
       <div class="top-bar">
-        <h2 class="page-title">Add Meal (Smart Entry)</h2>
+        <h2 class="page-title">Add Meal</h2>
         <div class="top-nav-icons">
           <i class="far fa-bell"></i>
           <div class="user-avatar-small"><i class="fas fa-user"></i></div>
@@ -48,7 +48,7 @@
           </a>
         </div>
       </div>
-
+      <!-- Meal Entry Interface: Allows users to input daily food consumption details -->
       <section class="meal-form-container">
         <div class="meal-card">
           <form method="post" action="/add-meal" id="add-meal-form">
@@ -58,6 +58,8 @@
                 type="text"
                 placeholder="Write Meal Name..."
                 name="meal_name"
+                pattern=".*[a-zA-Z\u0600-\u06FF].*"
+                title="Meal name must contain at least one letter (Arabic or English). Numbers alone are not allowed."
                 required
               />
             </div>
@@ -68,6 +70,8 @@
                 type="number"
                 placeholder="Calories Number"
                 name="calories"
+                min="1"
+                oninput="validity.valid || (value = '')"
                 required
               />
             </div>
@@ -81,7 +85,7 @@
                 value="Healthy"
                 required
               />
-
+              <!-- Interactive Category Selection: Updates the hidden input field via JavaScript for form submission -->
               <div class="category-selector">
                 <button
                   type="button"
@@ -102,18 +106,21 @@
 
             <div class="input-group">
               <label>Time</label>
+              <!-- Time Selection: Enhanced input wrapper for a better user experience with time-stamping -->
               <div class="time-input-wrapper">
                 <input
                   type="text"
                   name="meal_time"
                   id="meal-time"
                   placeholder="e.g. 2:30 PM"
+                  pattern="^(1[0-2]|0?[1-9]):([0-5][0-9])\s(AM|PM)$"
+                  title="Please enter time in format: 10:30 AM"
                   required
                 />
                 <i class="far fa-clock"></i>
               </div>
             </div>
-
+            <!-- Submission Trigger: Processes the meal entry and redirects back to the dashboard -->
             <button type="submit" class="submit-meal-btn">Log Meal</button>
           </form>
         </div>

@@ -12,6 +12,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link rel="stylesheet" href="/static/css/style.css" />
+    <!-- SweetAlert2 library for professional and interactive popup notifications -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>NutriTrack</title>
   </head>
@@ -49,8 +50,9 @@
           </a>
         </div>
       </div>
-
+      <!-- History Section: Displays a chronological list of all logged meals -->
       <section class="history-container">
+        <!-- Data Injection: The $$MEALS_LIST$$ placeholder is replaced with dynamically generated HTML from the backend -->
         <div class="history-list" id="history-list">$$MEALS_LIST$$</div>
       </section>
     </main>
